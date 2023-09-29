@@ -14,10 +14,11 @@ class Main {
         } catch (Exception e) {
             String errorMsg = "Los valores que introduzcan deben ser números y en el caso de ser decimales debes utilizar '.'";
             System.out.println(errorMsg);
+            System.exit(1);
         } finally {
             keyboard.close();
             double h = Math.sqrt(Math.pow(l1, 2) + Math.pow(l2, 2));
-            String finalMsg = "La hipotenusa sel triangulo mide: " + h;
+            String finalMsg = "La hipotenusa del triangulo mide: " + h;
             System.out.println(finalMsg);
         }
     }
