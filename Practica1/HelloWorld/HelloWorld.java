@@ -1,5 +1,11 @@
+import java.util.Scanner;
+
 class HelloWorld {
     public static void main(String[] args) {
-        System.out.println("Hello World");
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("Como te llamas?");
+        String name = keyboard.nextLine();
+        System.out.println("Buenas tardes " + name);
+        keyboard.close();
     }
 }
