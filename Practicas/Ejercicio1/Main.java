@@ -62,8 +62,8 @@ public class Main {
 
     System.out.println("----------CHAR------------");
     System.out.println(Character.SIZE);
-    //System.out.println(Character.MAX_VALUE);
-    //System.out.println(Character.MIN_VALUE);
+    // System.out.println(Character.MAX_VALUE);
+    // System.out.println(Character.MIN_VALUE);
 
     // ¿Qué valor esta proporcionando cada uno de ellos?
     // Nos proporcionan el valor maximo, el minimo y su tamaño en bits
@@ -112,7 +112,8 @@ public class Main {
     System.out.println(valorByte + 1);
 
     // ¿Por qué el resultado no es el mismo?
-    // Si sumamos un integer con un byte el resultado lo es un integer pero si
+
+    // Si sumamos un integer con un byte el resultado es un integer pero si
     // usamos ++ el resultado sigue siendo byte por lo tanto no puede superar su
     // valor maximo
 
@@ -123,7 +124,7 @@ public class Main {
     // ¿Por qué una da error y la otra no? ¿Entiendes ahora porqué el resultado es
     // distinto al usar la orden de incremento frente a la de sumar 1.
 
-    // Da error porque al usar el operador + el resultado es un int.
+    // Da error porque al estar sumando un int el resultado es un int.
 
     // Si quieres incrementar la variable en 3 manteniendo el tipo de dato inicial
     // debes usar +=. Prueba..
@@ -170,11 +171,11 @@ public class Main {
     // Comenta y descomenta de una en una para verificar tu respuesta.
 
     // b1=1; b2=5; b3=b2+b3; System.out.println("El valor de b3 es: "+b3);
-    // Da error porque al usar el operador + el resultado es un integer por lo que
+    // Da error porque al sumar un int el resultado es un integer por lo que
     // no concuerda con el tipo de dato de b3 (byte).
 
     // s1=1; s2=5; s3=s1+s2; System.out.println("El valor de s3 es: "+s3);
-    // Da error porque al usar el operador + el resultado es un integer por lo que
+    // Da error porque al sumar un int el resultado es un integer por lo que
     // no concuerda con el tipo de dato de s3 (short).
 
     n1 = 1;
@@ -196,7 +197,8 @@ public class Main {
     System.out.println("El valor de f3 es: " + f3);
     // f1=5.4;
     // Da error porque 5.4 es de tipo double y lo queremos asignar a una variable de
-    // tipo float para que no diera error deberia de ser 5.4f
+    // tipo float(tipo de dato más pequeño que double) para que no diera error
+    // deberia de ser 5.4f
 
     f1 = 5.4f;
     f2 = 4.6f;
@@ -307,7 +309,7 @@ public class Main {
 
     System.out.println(e2 / e1);
 
-    // Si el resultado es el cocuente
+    // Si el resultado es el cociente
 
     // Imprime el resultado de e1%e2. ¿Qué has obtenido?
 
