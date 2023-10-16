@@ -1,2 +1,3 @@
-# De minúsculas a mayúsculas
-Implemente un programa que pida una cadena de texto e imprima la misma cadena con todas sus letras en mayúsculas. 
+# Día de la semana
+
+Escriba un programa que pida un número entre 1 y 7 y responda el día de la semana. Use una estructura de selección del tipo 'switch'.

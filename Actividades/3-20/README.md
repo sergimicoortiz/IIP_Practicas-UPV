@@ -1,2 +1,13 @@
-# De minúsculas a mayúsculas
-Implemente un programa que pida una cadena de texto e imprima la misma cadena con todas sus letras en mayúsculas. 
+# Ordenación de 2 Strings
+Escribe un programa que pida dos Strings e los imprima ordenados de manera alfabética.
+
+
+> p.ej.
+```
+Jordi Zamora
+Jordi Linares
+```
+```
+Result: 
+Jordi Linares
+Jordi Zamora

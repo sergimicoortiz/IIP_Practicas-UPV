@@ -4,10 +4,11 @@ class Main {
     public static void main(String[] args) {
         // Escribe tu código aquí
         Scanner keyboard = new Scanner(System.in);
-        String msg1 = "Introduzca un string";
+        String msg1 = "Introduzca un número entero";
         System.out.println(msg1);
-        String s = keyboard.nextLine();
+        int n = keyboard.nextInt();
         keyboard.close();
-        System.out.println(s.toUpperCase());
+        String resultado = n % 2 == 0 ? "par" : "impar";
+        System.out.println("El número: " + n + " es " + resultado);
     }
 }

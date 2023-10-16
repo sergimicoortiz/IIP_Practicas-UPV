@@ -1,2 +1,3 @@
-# De minúsculas a mayúsculas
-Implemente un programa que pida una cadena de texto e imprima la misma cadena con todas sus letras en mayúsculas. 
+# ¿Son las dos cadenas iguales?
+
+Escribe un programa que pida dos cadenas de texto y responda si el contenido de las dos cadenas es el mismo.
