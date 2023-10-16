@@ -1,2 +1,3 @@
-# De minúsculas a mayúsculas
-Implemente un programa que pida una cadena de texto e imprima la misma cadena con todas sus letras en mayúsculas. 
+# Múltiplos
+
+Escribe un programa que solicite dos números enteros y responda si el primeros es o no múltiplo del segundo.

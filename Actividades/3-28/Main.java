@@ -2,12 +2,19 @@ import java.util.Scanner;
 
 class Main {
     public static void main(String[] args) {
-        // Escribe tu código aquí
-        Scanner keyboard = new Scanner(System.in);
-        String msg1 = "Introduzca un string";
-        System.out.println(msg1);
-        String s = keyboard.nextLine();
-        keyboard.close();
-        System.out.println(s.toUpperCase());
+        // Lee
+        Scanner tec = new Scanner(System.in);
+        String s = tec.nextLine();
+
+        try {
+            int i = Integer.parseInt(s);
+            System.out.println(i);
+        } catch (Exception e) {
+            System.out.println("La cadena: " + s + " no es un int");
+            // En caso de no ser int da la exepcion: java.lang.NumberFormatException
+        }
+
+        // cerramos teclado
+        tec.close();
     }
 }

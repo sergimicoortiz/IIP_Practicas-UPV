@@ -1,2 +1,7 @@
-# De minúsculas a mayúsculas
-Implemente un programa que pida una cadena de texto e imprima la misma cadena con todas sus letras en mayúsculas. 
+# Ternas pitagóricas
+
+3 números reales a,b,c (float or double) son una terna pitagórica si ellos cumplen cualquiera de estas ecuaciones.
+
+(Ver fichero Ecuaciones.png)
+
+Escribe un programa que pida a, b y c y responda si forma o no una terna pitagórica.
