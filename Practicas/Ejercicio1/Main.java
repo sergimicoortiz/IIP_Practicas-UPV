@@ -307,6 +307,9 @@ public class Main {
     // ¿Puedes afirmar que el resultado obtenido es el cociente? Para ello cambia
     // los valores asignados a e1 y e2.
 
+    e1 = 11;
+    e2 = 2;
+
     System.out.println(e2 / e1);
 
     // Si el resultado es el cociente
