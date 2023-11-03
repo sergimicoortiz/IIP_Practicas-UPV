@@ -1,4 +1,4 @@
-package Practica1.Ejercicio1;
+package Practicas.P1E1;
 /* ENUNCIADO PRaCTICA 1: Ejercicio 1
 --------------------------------------------
 Algunos datos del tipo primitivo han sido implementados
