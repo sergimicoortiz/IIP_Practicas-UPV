@@ -57,7 +57,9 @@ public class Main {
 
         // Ajuste la misma variable para que el resultado sólo muestre dos decimales.
         // Usando Math.round()
-        costeTurista = Math.round(costeTurista * 100) / 100.0;
+        int numDecimales = 2;
+        double pow10 = Math.pow(10, numDecimales);
+        costeTurista = Math.round(costeTurista * pow10) / pow10;
 
         // Ajuste usando casting. Para obtener, por otro procedimiento el resultado con
         // dos decimales.
