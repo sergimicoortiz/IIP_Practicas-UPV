@@ -51,21 +51,20 @@ class Main {
                 double resultado = 0.0;
                 switch (menu) {
                     case 1:
-                        // if (x > Math.PI * 2) {
-                        //     int deMas = (int) Math.floor(x / (Math.PI * 2));
-                        //     x = x - (Math.PI * 2 * deMas);
-                        // }
                         for (int n = 0; n < precision; n++) {
                             double factorial = 1;
                             for (int i = 1; i <= n; i++) {
                                 factorial *= i;
                             }
-                            // System.out.println(n + "!=" + factorial);
                             resultado += Math.pow(x, n) / factorial;
                         }
                         System.out.println("\t e^x = " + resultado + "---> e^x =" + Math.exp(x));
                         break;
                     case 2:
+                        if (x > Math.PI * 2) {
+                            int deMas = (int) Math.floor(x / (Math.PI * 2));
+                            x = x - (Math.PI * 2 * deMas);
+                        }
                         for (int n = 0; n < precision; n++) {
                             double menos1 = Math.pow(-1, n);
                             double xAl2n = Math.pow(x, 2 * n);
@@ -78,6 +77,10 @@ class Main {
                         System.out.println("\tcos(x) = " + resultado + " ---> cos(x) =" + Math.cos(x));
                         break;
                     case 3:
+                        if (x > Math.PI * 2) {
+                            int deMas = (int) Math.floor(x / (Math.PI * 2));
+                            x = x - (Math.PI * 2 * deMas);
+                        }
                         for (int n = 0; n < precision; n++) {
                             double menos1 = Math.pow(-1, n);
                             double xAl2n = Math.pow(x, 2 * n + 1);
