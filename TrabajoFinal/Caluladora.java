@@ -2,7 +2,6 @@ package TrabajoFinal;
 
 import java.util.Scanner;
 
-@SuppressWarnings("unused")
 class Caluladora {
 
     public static String mensajeFinal(String op, double resultado) {
@@ -11,80 +10,79 @@ class Caluladora {
         return resultado - resultadoEntero == 0 ? msg + resultadoEntero : msg + resultado;
     }
 
-    // public static double calculaSinParentesis(String str) {
-    // double numeroTmp = 0;
-    // double total = 0;
-    // int posIni = 0;
-    // int posFin = 0;
-    // while (posFin < str.length()) {
-    // char c = str.charAt(posFin);
-    // if (c == '*' || c == '/') {
-    // numeroTmp = Double.parseDouble(str.substring(posIni, posFin));
-    // System.out.println(numeroTmp);
-    // if (total != 0) {
-    // total = calculaSwitch(total, numeroTmp, c);
-    // } else {
-    // total = numeroTmp;
-    // }
-    // posIni = posFin + 1;
-    // }
-    // posFin++;
-    // }
-    // return total;
-    // }
-
-    // public static double calculaSinParentesis(String str) {
-    // double numeroTmp = 0;
-    // double total = 0;
-    // char op = ' ';
-    // int posIni = 0;
-    // int posFin = 0;
-    // while (posFin < str.length()) {
-    // char c = str.charAt(posFin);
-    // if (c == '*' || c == '/') {
-    // op = c;
-    // numeroTmp = Double.parseDouble(str.substring(posIni, posFin));
-    // if (total == 0) {
-    // total = numeroTmp;
-    // }
-    // posIni = posFin + 1;
-    // }
-    // posFin++;
-    // }
-    // return total;
-    // }
-
-    public static double calculaSinParentesis(String str) {
-        String newStr = str.startsWith("-") ? "0" + str : str;
-        double numeroTmp = 0;
-
+    public static double forRestar(String str) {
+        str = "0" + str;
+        String[] aRestar = str.split("\\-");
+        if (aRestar.length == 1)
+            return Double.parseDouble(aRestar[0]);
         double total = 0;
+        for (int i = 0; i < aRestar.length; i++) {
+            double num = Double.parseDouble(aRestar[i]);
+            if (i == 0) {
+                total = num;
+            } else {
+                total -= num;
+            }
+        }
         return total;
     }
 
-    public static double calculaConParentesis(String str) {
-        // separar por parentesis en una array
+    public static double forSuma(String str) {
+        str = "0" + str;
+        String[] aSumar = str.split("\\+");
+        if (aSumar.length == 1)
+            return forRestar(aSumar[0]);
         double total = 0;
+        for (int i = 0; i < aSumar.length; i++) {
+            double num = forRestar(aSumar[i]);
+            if (i == 0) {
+                total = num;
+            } else {
+                total += num;
+            }
+        }
+        return total;
+    }
+
+    public static double forMultiplicacion(String str) {
+        str = "0" + str;
+        String[] aMultiplicar = str.split("\\*");
+        if (aMultiplicar.length == 1)
+            return forSuma(aMultiplicar[0]);
+        double total = 0;
+        for (int i = 0; i < aMultiplicar.length; i++) {
+            double num = forSuma(aMultiplicar[i]);
+            if (i == 0) {
+                total = num;
+            } else {
+                total *= num;
+            }
+        }
+        return total;
+    }
+
+    public static double forDivision(String str) {
+        str = "0" + str;
+        String[] aDividir = str.split("\\/");
+        if (aDividir.length == 1)
+            return forMultiplicacion(aDividir[0]);
+        double total = 0;
+        for (int i = 0; i < aDividir.length; i++) {
+            double num = forMultiplicacion(aDividir[i]);
+            if (i == 0) {
+                total = num;
+            } else {
+                total /= num;
+            }
+        }
         return total;
     }
 
     public static double calcula(String str) {
-        if (str.contains("(") || str.contains(")")) {
-            return calculaConParentesis(str);
-        } else {
-            return calculaSinParentesis(str);
-        }
-    }
+        String strFinal = str.replace(" ", "").replace("(", "").replace(")", "")
+                .replace("+-", "-").replace("--", "+").replace("-+", "-").replace("++", "+");
 
-    public static double calculaSwitch(double n1, double n2, char op) {
-        switch (op) {
-            case '*':
-                return n1 * n2;
-            case '/':
-                return n1 / n2;
-            default:
-                return n1 + n2;
-        }
+        return forDivision(strFinal);
     }
 
     public static void desdeTeclado() {
@@ -101,18 +99,18 @@ class Caluladora {
     }
 
     public static void main(String[] args) {
-        String[] datosPrueba = { "-2*-2", "-12.5/-2", "-12.5-3", "12.5+3.8", "(-2)*(-2)", "(-2)/(+(-5))", "(+5)-(-3)",
-                "(-2.1)+(-0.9)" };
+        // String[] datosPrueba = { "-2*-2", "-12.5/-2", "-12.5-3", "12.5+3.8",
+        // "(-2)*(-2)", "(-2)/(+(-5))", "(+5)-(-3)",
+        // "(-2.1)+(-0.9)" };
 
         // for (int i = 0; i < datosPrueba.length; i++) {
         // System.out.println(mensajeFinal(datosPrueba[i], calcula(datosPrueba[i])));
         // }
-        // desdeTeclado();
-
-        // System.out.println(calcula("-2*-2"));
-        System.out.println(calcula("-12.5/-2"));
-        // System.out.println(calcula("-12.5-3"));
-        // System.out.println(calcula("12.5+3.8"));
+        desdeTeclado();
+        // TODO: revisar prioridades de operaciones 1+(2*2) deberia de ser 5 pero da 6
+        // ocurre por quitar los parentesis
+        // TODO: añadir potencias
+        // TODO: constrol de errores (sobretood en la division por 0)
 
     }
 }
