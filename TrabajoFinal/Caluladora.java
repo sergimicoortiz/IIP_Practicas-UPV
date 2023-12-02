@@ -10,6 +10,55 @@ class Caluladora {
         return resultado - resultadoEntero == 0 ? msg + resultadoEntero : msg + resultado;
     }
 
+    public static String replaceOperadores(String str) {
+        return str.replace("+-", "-").replace("--", "+").replace("-+", "-").replace("++", "+");
+    }
+
+    public static boolean contieneParentesis(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '(') {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static int[] posOpenClose(String str) {
+        int posOpen = -1;
+        int posClose = -1;
+        int cont = 0;
+        int[] toReturn = new int[2];
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (c == '(') {
+                cont++;
+            }
+            if (c == ')') {
+                cont--;
+            }
+            if (posOpen == -1 && c == '(') {
+                posOpen = i;
+            }
+            if (posClose == -1 && c == ')' && cont == 0) {
+                posClose = i;
+            }
+        }
+        toReturn[0] = posOpen;
+        toReturn[1] = posClose;
+        return toReturn;
+    }
+
+    public static double calcularParentesis(String str) {
+        while (contieneParentesis(str)) {
+            int[] openClose = posOpenClose(str);
+            String strParentesis = str.substring(openClose[0] + 1, openClose[1]);
+            double resultado = calcula(strParentesis);
+            str = str.replace("(" + strParentesis + ")", String.valueOf(resultado));
+            str = replaceOperadores(str);
+        }
+        return calcula(str);
+    }
+
     public static double forRestar(String str) {
         str = "0" + str;
         String[] aRestar = str.split("\\-");
@@ -79,10 +128,11 @@ class Caluladora {
     }
 
     public static double calcula(String str) {
-        String strFinal = str.replace(" ", "").replace("(", "").replace(")", "")
-                .replace("+-", "-").replace("--", "+").replace("-+", "-").replace("++", "+");
-
-        return forDivision(strFinal);
+        // divisio=>multiplicacio=>suma=>resta
+        if (contieneParentesis(str)) {
+            return calcularParentesis(str);
+        }
+        return forDivision(str);
     }
 
     public static void desdeTeclado() {
@@ -104,11 +154,12 @@ class Caluladora {
         // "(-2.1)+(-0.9)" };
 
         // for (int i = 0; i < datosPrueba.length; i++) {
-        // System.out.println(mensajeFinal(datosPrueba[i], calcula(datosPrueba[i])));
+        // System.out.println(mensajeFinal(datosPrueba[i],
+        // calcula(datosPrueba[i])));
         // }
+
         desdeTeclado();
-        // TODO: revisar prioridades de operaciones 1+(2*2) deberia de ser 5 pero da 6
-        // ocurre por quitar los parentesis
+
         // TODO: añadir potencias
         // TODO: constrol de errores (sobretood en la division por 0)
 
