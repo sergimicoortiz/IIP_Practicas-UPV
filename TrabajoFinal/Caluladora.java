@@ -118,10 +118,31 @@ class Caluladora {
         double total = 0;
         for (int i = 0; i < aDividir.length; i++) {
             double num = forMultiplicacion(aDividir[i]);
+            if (num == 0) {
+                System.out.println("No puedes dividir por zero");
+                System.exit(1);
+            }
             if (i == 0) {
                 total = num;
             } else {
                 total /= num;
+            }
+        }
+        return total;
+    }
+
+    public static double forPotencias(String str) {
+        str = "0" + str;
+        String[] aPotencia = str.split("\\^");
+        if (aPotencia.length == 1)
+            return forDivision(aPotencia[0]);
+        double total = 0;
+        for (int i = 0; i < aPotencia.length; i++) {
+            double num = forDivision(aPotencia[i]);
+            if (i == 0) {
+                total = num;
+            } else {
+                total = Math.pow(total, num);
             }
         }
         return total;
@@ -132,7 +153,7 @@ class Caluladora {
         if (contieneParentesis(str)) {
             return calcularParentesis(str);
         }
-        return forDivision(str);
+        return forPotencias(str);
     }
 
     public static void desdeTeclado() {
@@ -149,19 +170,25 @@ class Caluladora {
     }
 
     public static void main(String[] args) {
-        // String[] datosPrueba = { "-2*-2", "-12.5/-2", "-12.5-3", "12.5+3.8",
-        // "(-2)*(-2)", "(-2)/(+(-5))", "(+5)-(-3)",
-        // "(-2.1)+(-0.9)" };
+        try {
+            // String[] datosPrueba = { "-2*-2", "-12.5/-2", "-12.5-3", "12.5+3.8",
+            // "(-2)*(-2)", "(-2)/(+(-5))", "(+5)-(-3)",
+            // "(-2.1)+(-0.9)" };
 
-        // for (int i = 0; i < datosPrueba.length; i++) {
-        // System.out.println(mensajeFinal(datosPrueba[i],
-        // calcula(datosPrueba[i])));
-        // }
+            // for (int i = 0; i < datosPrueba.length; i++) {
+            // System.out.println(mensajeFinal(datosPrueba[i],
+            // calcula(datosPrueba[i])));
+            // }
 
-        desdeTeclado();
-
-        // TODO: añadir potencias
-        // TODO: constrol de errores (sobretood en la division por 0)
-
+            desdeTeclado();
+        } catch (Exception e) {
+            String eClass = e.getClass().getName();
+            if (eClass.equals("java.lang.NumberFormatException")) {
+                System.out.println("Error al parsear el string");
+            } else {
+                System.out.println("Ha ocurrido un error");
+            }
+            System.exit(1);
+        }
     }
 }
