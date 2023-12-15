@@ -20,14 +20,14 @@ public class MyMath {
     public static double angulo(double a, double b) {
         double ang = Math.atan(Math.abs(b) / Math.abs(a));
         if ((a <= 0) && (b >= 0)) {// segundo
-            return Math.PI - ang;
+          return Math.PI - ang;
         } else if ((a <= 0) && (b <= 0)) {// tercer
-            return (3 * Math.PI / 2) - ang;
+          return -Math.PI + ang;
         } else if ((a >= 0) && (b <= 0)) {// cuarto
-            return (2 * Math.PI) - ang;
+          return  - ang;
         } else {// primer
-            return ang;
+          return ang;
         }
-    }
+      }
 
 }
