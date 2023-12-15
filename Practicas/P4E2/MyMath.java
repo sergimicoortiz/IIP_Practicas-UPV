@@ -10,11 +10,7 @@ public class MyMath {
     }
 
     public static float max(float f1, float f2, float f3) {
-        float m = max(f1, f2);
-        if (m > f3) {
-            return m;
-        }
-        return f3;
+        return max(max(f1, f2), f3);
     }
 
     public static double modulo(double a, double b) {
